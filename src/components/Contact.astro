@@ -1,0 +1,42 @@
+---
+// src/components/Contact.astro
+const { contact } = Astro.props;
+const address = contact?.address || "Calle Ejemplo 123, Madrid";
+const fb = (contact?.facebook || "").trim();
+const ig = (contact?.instagram || "").trim();
+const hasFb = /^https?:\/\//i.test(fb);
+const hasIg = /^https?:\/\//i.test(ig);
+---
+<section id="contact" class="section contact reveal reveal-up">
+  <div class="wrap">
+    <h2>Contacto</h2>
+    <div class="contact__grid">
+      <form action="https://api.web3forms.com/submit" method="POST" class="form">
+        <input type="hidden" name="access_key" value="6959bec1-a69a-4cc3-a3a0-160ebbe80985">
+        <label>Nombre <input type="text" name="name" required /></label>
+        <label>Email <input type="email" name="email" required /></label>
+        <label>Teléfono <input type="tel" name="phone" /></label>
+        <label>Mensaje <textarea name="message" required></textarea></label>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+
+      <div class="contact__info">
+        <p class="muted" style="margin-top:0">
+          ¿Tienes dudas? Te respondemos en menos de 24 h.
+        </p>
+        <ul>
+          {contact?.phone && <li><strong>Teléfono:</strong> {contact.phone}</li>}
+          {contact?.email && <li><strong>Email:</strong> {contact.email}</li>}
+          {contact?.address && <li><strong>Dirección:</strong> {contact.address}</li>}
+        </ul>
+      </div>
+
+      <div class="contact__map">
+        <div class="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1758.4790345712227!2d-78.70638118331031!3d22.011419247166014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses!2ses!4v1759075988441!5m2!1ses!2ses" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

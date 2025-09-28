@@ -1,0 +1,34 @@
+---
+/**
+ * Props opcionales:
+ *  - title: string
+ *  - subtitle: string
+ *  - body: string (admite HTML simple)
+ *  - ctaLabel: string
+ *  - ctaHref: string
+ *  - image: string (ruta absoluta o URL)
+ */
+const {
+  title = "Acerca de Nosotros",
+  subtitle = "Aprender idiomas con propósito",
+  body = "EstudioMacuba es una escuela de idiomas con clases personalizadas y un enfoque práctico. Adaptamos el contenido a tus objetivos y nivel, con itinerarios reales para exámenes, entrevistas y viajes.",
+  ctaLabel = "Conoce más",
+  ctaHref = "#contact",
+  image = "/img/about.jpg"
+} = Astro.props;
+---
+<section id="about" class="section about">
+  <div class="wrap about__grid">
+    <div class="about__media">
+      <img src={image} alt={title} />
+    </div>
+    <div class="about__content">
+      <h2>{title}</h2>
+      <p class="muted" style="margin:.25rem 0 1rem">{subtitle}</p>
+      <p innerHTML={body}></p>
+      <p style="margin-top:1rem">
+        <a class="btn btn-primary btn-round" href={ctaHref}>{ctaLabel}</a>
+      </p>
+    </div>
+  </div>
+</section>

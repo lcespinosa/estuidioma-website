@@ -1,0 +1,42 @@
+---
+/**
+ * Props opcionales para reutilizar el componente:
+ *  - title, subtitle, ctaPrimaryLabel, ctaPrimaryHref, ctaSecondaryLabel, ctaSecondaryHref, image
+ */
+const {
+  title = "¡Bienvenidos a Estudioma Cuba!",
+  subtitle = "Clases personalizadas en español, inglés, alemán, ruso y francés. Descubre un nuevo mundo de idiomas.",
+  ctaPrimaryLabel = "Explora",
+  ctaPrimaryHref = "#courses",
+  ctaSecondaryLabel = "Contacto",
+  ctaSecondaryHref = "#contact",
+  image = "src/img/hero.jpg"
+} = Astro.props;
+---
+<section class="hero hero--split" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
+    <!-- Texto (izquierda) -->
+    <div class="hero__content">
+      <h1 id="hero-title">{title}</h1>
+      <p class="muted">{subtitle}</p>
+      <div class="cta">
+        <a href={ctaPrimaryHref} class="btn btn-primary btn-round">{ctaPrimaryLabel}</a>
+        <a href={ctaSecondaryHref} class="btn btn-ghost btn-round" style="margin-left:10px">{ctaSecondaryLabel}</a>
+      </div>
+    </div>
+
+    <!-- Imagen (derecha) -->
+    <div class="hero__media">
+      {/* picture con srcset para responsive real */}
+      <picture>
+        <source srcset={`${image}?w=1200 1200w, ${image}?w=900 900w, ${image}?w=600 600w`} sizes="(min-width: 960px) 52vw, 100vw" />
+        <img
+          src={image}
+          alt="Estudio de idiomas"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
+    </div>
+  </div>
+</section>

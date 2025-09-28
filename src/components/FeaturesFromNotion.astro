@@ -1,0 +1,21 @@
+---
+// src/components/FeaturesFromNotion.astro
+const { items = [] } = Astro.props;
+---
+<section class="section features-modern" aria-labelledby="features-title">
+  <div class="wrap">
+    <header class="features-modern__header">
+      <h2 id="features-title">Por qué elegirnos</h2>
+      <p class="muted">Todo lo que hacemos para acelerar tu aprendizaje.</p>
+    </header>
+    <div class="features-modern__grid">
+      {items.map((f) => (
+        <article class="feature-card reveal reveal-up">
+          <div class="feature-card__icon"><span>🎓</span></div>
+          <h3>{f.title}</h3>
+          <p class="muted">{f.seoDescription || f.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

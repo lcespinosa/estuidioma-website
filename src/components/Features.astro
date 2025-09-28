@@ -1,0 +1,48 @@
+---
+/**
+ * Si quieres, puedes pasar un array `items` por props.
+ * Por ahora dejamos contenido estático para ir rápido.
+ */
+const items = [
+  {
+    icon: "🎓",
+    title: "Profesores expertos",
+    text: "Más de 30 años de experiencia combinada. Metodología práctica y flexible."
+  },
+  {
+    icon: "💻",
+    title: "Presencial y online",
+    text: "Elige la modalidad que mejor encaje: individual o en grupo."
+  },
+  {
+    icon: "🏅",
+    title: "Preparación de exámenes",
+    text: "Niveles A0–C1 (MCER). Simulacros y entrenamiento orientado a resultados."
+  },
+  {
+    icon: "🗓️",
+    title: "Horarios flexibles",
+    text: "Compatibles con trabajo y estudios. Mañana, tarde o fin de semana."
+  }
+];
+---
+<section class="section features-modern" aria-labelledby="features-title">
+  <div class="wrap">
+    <header class="features-modern__header">
+      <h2 id="features-title">Mucho más que clases</h2>
+      <p class="muted">Todo lo que hacemos para acelerar tu aprendizaje.</p>
+    </header>
+
+    <div class="features-modern__grid">
+      {items.map((f) => (
+        <article class="feature-card">
+          <div class="feature-card__icon">
+            <span aria-hidden="true">{f.icon}</span>
+          </div>
+          <h3>{f.title}</h3>
+          <p class="muted">{f.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+---
+/** Teachers.astro
+ * Props:
+ *  - items: Array<{ title, role, languages, photo, seoDescription }>
+ */
+const { items = [] } = Astro.props;
+---
+
+{items.length > 0 && (
+  <section id="teachers" class="section teachers reveal reveal-up" aria-labelledby="teachers-title">
+    <div class="wrap">
+      <h2 id="teachers-title">Profesores</h2>
+      <div class="grid cards">
+        {items.map((t) => (
+          <article class="card teacher-card">
+            <img
+              class="avatar"
+              src={t.photo || "/img/teacher-placeholder.avif"}
+              alt={t.title}
+              width="96"
+              height="96"
+              loading="lazy"
+            />
+            <h3 style="margin:8px 0 4px">{t.title}</h3>
+            {t.role && <p class="muted" style="margin:0 0 6px">{t.role}</p>}
+            {t.languages && <p class="muted" style="margin:0 0 10px">Idiomas: {t.languages}</p>}
+            {t.seoDescription && <p style="margin:0">{t.seoDescription}</p>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

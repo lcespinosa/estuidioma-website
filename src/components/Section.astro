@@ -1,0 +1,24 @@
+---
+/** Props:
+ *  - item: { title, body, photo, slug }
+ *  - index?: number
+ */
+const { item, index = 0 } = Astro.props;
+const hasPhoto = !!item?.photo;
+const isEven = index % 2 === 0;
+---
+
+<section class="section section--feature" id={item?.slug}>
+  <div class={`wrap feature__grid ${isEven ? '' : 'feature__grid--reverse'} reveal ${isEven ? 'reveal-left' : 'reveal-right'}`}>
+    <div class="feature__content">
+      {item?.title && <h2>{item.title}</h2>}
+      {item?.body && <p class="lead">{item.body}</p>}
+    </div>
+
+    {hasPhoto && (
+      <div class="feature__media">
+        <img src={item.photo} alt={item.title || 'Imagen ilustrativa'} loading="lazy" />
+      </div>
+    )}
+  </div>
+</section>

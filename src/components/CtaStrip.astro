@@ -1,0 +1,19 @@
+---
+const {
+  title = "¿Listo para empezar tu camino en los idiomas?",
+  subtitle = "Reserva tu primera clase gratuita y descubre cómo podemos ayudarte a alcanzar tus objetivos.",
+  ctaLabel = "Reserva ahora",
+  ctaHref = "#contact"
+} = Astro.props;
+---
+<section class="cta-strip cta--cream reveal reveal-scale" aria-labelledby="cta-strip-title">
+  <div class="wrap cta-strip__grid">
+    <div>
+      <h2 id="cta-strip-title">{title}</h2>
+      <p class="muted">{subtitle}</p>
+    </div>
+    <div class="cta-strip__action">
+      <a href={ctaHref} class="btn btn-primary btn-round">{ctaLabel}</a>
+    </div>
+  </div>
+</section>

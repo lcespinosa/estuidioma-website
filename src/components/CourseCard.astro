@@ -1,0 +1,38 @@
+---
+import { splitBullets } from "../lib/renderFeatures";
+const { course } = Astro.props;
+const bullets = splitBullets(course.features);
+---
+<article class="card course reveal reveal-up">
+  {course.photo && (
+    <div class="card__media">
+      <img src={course.photo} alt={course.title} />
+    </div>
+  )}
+  <div class="card__body">
+    <h3>{course.title}</h3>
+
+    {/* Meta */}
+    <p class="muted">
+      {course.level && `Nivel ${course.level} • `}
+      {course.duration && `${course.duration} • `}
+      {course.schedule}
+    </p>
+
+    {/* Descripción larga */}
+    {course.body && <p>{course.body}</p>}
+
+    {/* Bullets si existen */}
+    {bullets.length > 0 && (
+      <ul style="margin:0 0 12px 18px">
+        {bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    )}
+
+    <div class="actions">
+      {course.price && <span class="pill">{course.price}</span>}
+      <a href="#contact" class="btn btn-ghost btn-round">Reservar ahora</a>
+      <a href="#contact" class="btn btn-primary btn-round">Ver curso</a>
+    </div>
+  </div>
+</article>
