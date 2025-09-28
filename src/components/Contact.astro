@@ -24,18 +24,26 @@ const hasIg = /^https?:\/\//i.test(ig);
         <p class="muted" style="margin-top:0">
           ¿Tienes dudas? Te respondemos en menos de 24 h.
         </p>
-        <ul>
+        <ul style="list-style:none;">
           {contact?.phone && (
             <li>
-              <strong>Teléfono:</strong> <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+              <a href={`tel:${contact.phone}`} style="display:flex; align-items:center; gap:6px; color:inherit; text-decoration:none;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.24c1.1.36 2.3.56 3.6.56a1 1 0 011 1V21a1 1 0 01-1 1C11.1 22 2 12.9 2 2a1 1 0 011-1h4.5a1 1 0 011 1c0 1.3.2 2.5.6 3.6a1 1 0 01-.2 1L6.6 10.8z"/></svg>
+                {contact.phone}
+              </a>
             </li>
           )}
           {contact?.email && (
             <li>
-              <strong>Email:</strong> <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              <a href={`mailto:${contact.email}`} style="display:flex; align-items:center; gap:6px; color:inherit; text-decoration:none;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                {contact.email}
+              </a>
             </li>
           )}
-          {contact?.address && <li><strong>Dirección:</strong> {contact.address}</li>}
+          {contact?.address && (
+            <li>{contact.address}</li>
+          )}
         </ul>
       </div>
 
