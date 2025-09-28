@@ -1,0 +1,9 @@
+# build output
+_site/
+
+# node
+node_modules/
+package-lock.json
+
+# env
+.env
