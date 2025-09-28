@@ -46,8 +46,8 @@ async function getQueryMode(databaseId: string): Promise<
 // ============ Helpers de lectura de props ============
 const getText = (p: any) =>
   p?.rich_text?.map((t: any) => t.plain_text).join("") ?? "";
-const getTitle = (p: any) =>
-  p?.title?.map((t: any) => t.plain_text).join("") ?? "";
+
+const getEmail = (p: any) => p?.email || getText(p) || "";
 const getUrl = (p: any) => p?.url || getText(p) || "";
 const getNumber = (p: any) => (typeof p?.number === "number" ? p.number : "");
 const getSelect = (p: any) => p?.select?.name ?? "";
@@ -77,7 +77,7 @@ const mapPage = (page: any) => {
     photo: getUrl(props.photo) || getFilesFirstUrl(props.photo) || "",
     rating: getNumber(props.rating) || "",
     phone: getText(props.phone) || "",
-    email: getText(props.email) || "",
+    email: getEmail(props.email) || "",
     address: getText(props.address) || "",
     facebook: getUrl(props.facebook) || "",
     instagram: getUrl(props.instagram) || "",

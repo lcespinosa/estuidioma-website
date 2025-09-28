@@ -25,8 +25,16 @@ const hasIg = /^https?:\/\//i.test(ig);
           ¿Tienes dudas? Te respondemos en menos de 24 h.
         </p>
         <ul>
-          {contact?.phone && <li><strong>Teléfono:</strong> {contact.phone}</li>}
-          {contact?.email && <li><strong>Email:</strong> {contact.email}</li>}
+          {contact?.phone && (
+            <li>
+              <strong>Teléfono:</strong> <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+            </li>
+          )}
+          {contact?.email && (
+            <li>
+              <strong>Email:</strong> <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            </li>
+          )}
           {contact?.address && <li><strong>Dirección:</strong> {contact.address}</li>}
         </ul>
       </div>
